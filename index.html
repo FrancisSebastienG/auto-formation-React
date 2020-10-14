@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>La syntaxe React</title>
+    <script src="https://unpkg.com/react@16.7.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>    
+
+    <style>
+        h1 {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #title{
+            background-color: green;
+        }
+        .heading{
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+        
+    <div id="react-root"></div>
+
+    <script type="text/babel">
+        
+        
+        //Création de composant à partir d'une classe Javascript
+        class BonjourClass extends React.Component {
+
+            constructor(props){
+                super(props)
+                this.state= {
+                    name : "Sébastien"
+                }
+                this.handleChange = this.handleChange.bind(this)
+            }
+
+            handleChange(e){
+                this.setState({
+                    name : e.target.value
+                })
+            }
+
+            render(){
+                return (
+                    <div id="title">
+                        <h1 className="heading">{this.props.message}</h1>
+                        <p>{this.state.name}, Vous apprenez la version {this.props.version} de Réact.</p>
+                        <p><input type="text" value={this.state.name} onChange={this.handleChange} /></p>
+                    </div>
+                )           
+            }
+        }
+
+        //Création de composant fonctionnel à partir d'une variable
+        const Bonjour = ({message, version}) => (
+            <div id="title">
+                <h1 className="heading">{message}</h1>
+                <p>Vous apprenez la version {version} de Réact.</p>
+            </div>
+        )
+
+        ReactDOM.render(
+
+                //React.createElement('h1', null, 'Bonjour de React'),
+                //h1>Bonjour de React</h1>,
+                < BonjourClass message="Bonjour de Réact 16" version={16} />,
+                document.getElementById('react-root')
+        )    
+
+
+    </script>  
+  
+
+</body>
+</html>

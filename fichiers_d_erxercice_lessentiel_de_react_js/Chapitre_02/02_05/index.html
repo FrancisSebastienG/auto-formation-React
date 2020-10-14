@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>La syntaxe React</title>
+    <script src="https://unpkg.com/react@16.7.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+</head>
+<body>
+    <div id="react-root"></div>
+
+    <script type="text/babel">
+
+        const Bonjour = () => (
+            <div>
+                <h1>Bonjour de Réact</h1>
+            </div>
+        )
+
+        ReactDOM.render(
+            <Bonjour />, 
+            document.getElementById('react-root')
+        )
+    </script>
+</body>
+</html>
